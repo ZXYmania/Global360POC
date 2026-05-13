@@ -1,6 +1,7 @@
 C:\Users\Dean\Documents\Global360POC\Backend\TodoList\bin\Release\net10.0\linux-x64\publish\TodoList
 C:\Users\Dean\Documents\Global360POC\Backend\TodoList\bin\Release\net10.0\linux-x64\publish\appsettings.Development.json
 C:\Users\Dean\Documents\Global360POC\Backend\TodoList\bin\Release\net10.0\linux-x64\publish\appsettings.json
+C:\Users\Dean\Documents\Global360POC\Backend\TodoList\bin\Release\net10.0\linux-x64\publish\dotnet-tools.json
 C:\Users\Dean\Documents\Global360POC\Backend\TodoList\bin\Release\net10.0\linux-x64\publish\TodoList.dll
 C:\Users\Dean\Documents\Global360POC\Backend\TodoList\bin\Release\net10.0\linux-x64\publish\TodoList.deps.json
 C:\Users\Dean\Documents\Global360POC\Backend\TodoList\bin\Release\net10.0\linux-x64\publish\TodoList.runtimeconfig.json

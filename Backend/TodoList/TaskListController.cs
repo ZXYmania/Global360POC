@@ -11,14 +11,15 @@ public class TaskListController : ControllerBase
     }
 
     [HttpGet]
+    [Route("/v1/[controller]")]
     public ActionResult<IEnumerable<TaskListItem>> GetAllTaskList()
     {
-        var output = TaskList.list.Values.ToList<TaskListItem>();
+        var output = TaskList.list.Values.ToList();
         return new ActionResult<IEnumerable<TaskListItem>>(output);
     }
 
     [HttpGet]
-    [Route("{id}")]
+    [Route("/v1/[controller]/{id}")]
     public ActionResult<TaskListItem> GetTaskById([FromRoute] Guid id)
     {
         if(TaskList.list.ContainsKey(id))
@@ -29,6 +30,7 @@ public class TaskListController : ControllerBase
     }
 
     [HttpPost]
+    [Route("/v1/[controller]")]
     public ActionResult<Guid> CreateTaskListItem([FromBody] string content)
     {
         var item = new TaskListItem(Guid.NewGuid(), content);
@@ -37,7 +39,7 @@ public class TaskListController : ControllerBase
     }
 
     [HttpPost]
-    [Route("{id}")]
+    [Route("/v1/[controller]/{id}")]
     public ActionResult UpdateTaskListItem(Guid id, [FromBody] string content)
     {
         if(TaskList.list.ContainsKey(id))

@@ -17,9 +17,6 @@ C:\Users\Dean\Documents\Global360POC\Backend\TodoList\bin\Release\net10.0\linux-
 C:\Users\Dean\Documents\Global360POC\Backend\TodoList\bin\Release\net10.0\linux-x64\TodoList.pdb
 C:\Users\Dean\Documents\Global360POC\Backend\TodoList\bin\Release\net10.0\linux-x64\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\Dean\Documents\Global360POC\Backend\TodoList\bin\Release\net10.0\linux-x64\Microsoft.OpenApi.dll
-C:\Users\Dean\Documents\Global360POC\Backend\TodoList\bin\Release\net10.0\linux-x64\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\Dean\Documents\Global360POC\Backend\TodoList\bin\Release\net10.0\linux-x64\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\Dean\Documents\Global360POC\Backend\TodoList\bin\Release\net10.0\linux-x64\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\Dean\Documents\Global360POC\Backend\TodoList\obj\Release\net10.0\linux-x64\rjimswa.dswa.cache.json
 C:\Users\Dean\Documents\Global360POC\Backend\TodoList\obj\Release\net10.0\linux-x64\rjsmrazor.dswa.cache.json
 C:\Users\Dean\Documents\Global360POC\Backend\TodoList\obj\Release\net10.0\linux-x64\rjsmcshtml.dswa.cache.json
@@ -35,3 +32,7 @@ C:\Users\Dean\Documents\Global360POC\Backend\TodoList\obj\Release\net10.0\linux-
 C:\Users\Dean\Documents\Global360POC\Backend\TodoList\obj\Release\net10.0\linux-x64\TodoList.pdb
 C:\Users\Dean\Documents\Global360POC\Backend\TodoList\obj\Release\net10.0\linux-x64\TodoList.genruntimeconfig.cache
 C:\Users\Dean\Documents\Global360POC\Backend\TodoList\obj\Release\net10.0\linux-x64\ref\TodoList.dll
+C:\Users\Dean\Documents\Global360POC\Backend\TodoList\bin\Release\net10.0\linux-x64\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Dean\Documents\Global360POC\Backend\TodoList\bin\Release\net10.0\linux-x64\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Dean\Documents\Global360POC\Backend\TodoList\bin\Release\net10.0\linux-x64\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Dean\Documents\Global360POC\Backend\TodoList\bin\Release\net10.0\linux-x64\dotnet-tools.json

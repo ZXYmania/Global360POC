@@ -35,3 +35,5 @@ C:\Users\Dean\Documents\Global360POC\Backend\TodoList\obj\Debug\net10.0\linux-x6
 C:\Users\Dean\Documents\Global360POC\Backend\TodoList\bin\Debug\net10.0\linux-x64\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Dean\Documents\Global360POC\Backend\TodoList\bin\Debug\net10.0\linux-x64\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Dean\Documents\Global360POC\Backend\TodoList\bin\Debug\net10.0\linux-x64\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Dean\Documents\Global360POC\Backend\TodoList\bin\Debug\net10.0\linux-x64\dotnet-tools.json
+C:\Users\Dean\Documents\Global360POC\Backend\TodoList\bin\Debug\net10.0\linux-x64\swagger.json

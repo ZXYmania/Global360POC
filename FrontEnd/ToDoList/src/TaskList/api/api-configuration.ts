@@ -22,5 +22,7 @@ export function provideApiConfiguration(rootUrl: string) {
   providedIn: 'root',
 })
 export class ApiConfiguration {
-  rootUrl: string = 'http://backend:8080';
+  // rootUrl: string = 'backend';
+  rootUrl: string = '/backend';
+
 }

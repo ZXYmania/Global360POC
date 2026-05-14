@@ -1,10 +1,13 @@
+using System.Net;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using static TaskList;
 
 [ApiController]
+[EnableCors("AllowAll")]
 [Route("TaskList")]
 public class TaskListController : ControllerBase
-{
+{    
     public TaskListController()
     {
 

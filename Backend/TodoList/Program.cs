@@ -1,3 +1,4 @@
+using System.Net;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi;
@@ -10,11 +11,21 @@ TaskList.Initialise();
 builder.Services.AddOpenApi();
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
+builder.Services.AddCors(o => o.AddPolicy("AllowAll", builder =>
+{
+    builder.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+}));
+
+
 
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo { Title = "TaskList", Version = "v1" });
 });
+
+
 
 var app = builder.Build();
 
@@ -25,6 +36,20 @@ if (app.Environment.IsDevelopment())
 }
 app.UseSwagger();
 
+app.UseCors("AllowAll"); 
+
+
+app.Use(async (context, next) =>
+{
+    if (context.Request.Method == HttpMethods.Options)
+    {
+        context.Response.Headers.Append("Access-Control-Allow-Origin", "*");
+        context.Response.Headers.Append("Allow", "GET, POST, PUT, OPTIONS");
+        context.Response.StatusCode = (int)HttpStatusCode.OK;
+        return;
+    }
+    await next.Invoke();
+});
 
 
 app.UseHttpsRedirection();

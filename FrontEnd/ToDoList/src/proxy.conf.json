@@ -1,7 +1,8 @@
 {
-  "backend/**": {
+  "/backend/**": {
     "target": "http://backend:8080",
     "secure": false,
-    "changeOrigin": true
+    "changeOrigin": true,
+    "pathRewrite": { "^/backend": "" }
   }
 }

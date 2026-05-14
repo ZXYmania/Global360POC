@@ -10,6 +10,7 @@ import { join } from 'node:path';
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
+var cors = require('cors')
 const angularApp = new AngularNodeAppEngine();
 
 /**
@@ -34,6 +35,8 @@ app.use(
     redirect: false,
   }),
 );
+
+app.use(cors());
 
 /**
  * Handle all other requests by rendering the Angular application.

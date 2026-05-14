@@ -42,7 +42,7 @@ export class TaskItem {
     else
     {
         console.log("create");
-        let id = await this.taskListService.v1TaskListPost$Json({ body:{content:content}});
+        let id = await this.taskListService.v1TaskListPost$Plain({ body:{content:content}});
         let taskItem :TaskListItem = (await this.taskListService.v1TaskListIdGet$Json({id:id}));
         await this.addToTaskList!(taskItem);
     }

@@ -16,7 +16,8 @@ export interface V1TaskListPost$Plain$Params {
 export function v1TaskListPost$Plain(http: HttpClient, rootUrl: string, params?: V1TaskListPost$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<string>> {
   const rb = new RequestBuilder(rootUrl, v1TaskListPost$Plain.PATH, 'post');
   if (params) {
-    rb.body(params.body, 'application/json');
+    rb.body(params.body, 'application/*+json');
+    console.log(rb);
   }
 
   return http.request(

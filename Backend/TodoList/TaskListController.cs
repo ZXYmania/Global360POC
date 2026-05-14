@@ -31,20 +31,20 @@ public class TaskListController : ControllerBase
 
     [HttpPost]
     [Route("/v1/[controller]")]
-    public ActionResult<Guid> CreateTaskListItem([FromBody] string content)
+    public ActionResult<Guid> CreateTaskListItem([FromBody] CreateTaskListbody body)
     {
-        var item = new TaskListItem(Guid.NewGuid(), content);
+        var item = new TaskListItem(Guid.NewGuid(), body.content);
         TaskList.list.Add(item.id, item);
         return new ActionResult<Guid>(item.id);
     }
 
     [HttpPost]
     [Route("/v1/[controller]/{id}")]
-    public ActionResult UpdateTaskListItem(Guid id, [FromBody] string content)
+    public ActionResult UpdateTaskListItem([FromRoute] Guid id, [FromBody] CreateTaskListbody body)
     {
         if(TaskList.list.ContainsKey(id))
         {
-            TaskList.list[id] = new TaskListItem(id, content);
+            TaskList.list[id] = new TaskListItem(id, body.content);
             return new OkResult();
         }
         return new NotFoundResult();

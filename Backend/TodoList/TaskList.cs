@@ -7,4 +7,6 @@ public class TaskList
     }
     public record TaskListItem(Guid id, string content);
 
+    public record CreateTaskListbody(String content);
+
 }

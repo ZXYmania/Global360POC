@@ -358,12 +358,13 @@ export class RequestBuilder {
     }
 
     // Perform the request
-    return new HttpRequest<T>(this.method.toUpperCase(), url, this._bodyContent, {
+    let response = new HttpRequest<T>(this.method.toUpperCase(), url, this._bodyContent, {
       params: httpParams,
       headers: httpHeaders,
       responseType: options.responseType,
       reportProgress: options.reportProgress,
       context: options.context
-    });
+    })
+    return response;
   }
 }

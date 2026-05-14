@@ -7,17 +7,18 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
+import { CreateTaskListbody } from '../../models/create-task-listbody';
 
 export interface V1TaskListIdPost$Params {
   id: string;
-      body?: string
+  body?: CreateTaskListbody
 }
 
 export function v1TaskListIdPost(http: HttpClient, rootUrl: string, params: V1TaskListIdPost$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
   const rb = new RequestBuilder(rootUrl, v1TaskListIdPost.PATH, 'post');
   if (params) {
     rb.path('id', params.id, {});
-    rb.body(params.body, 'application/*+json');
+    rb.body(params.body, 'application/json');
   }
 
   return http.request(

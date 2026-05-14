@@ -7,15 +7,16 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
+import { CreateTaskListbody } from '../../models/create-task-listbody';
 
 export interface V1TaskListPost$Json$Params {
-      body?: string
+      body?: CreateTaskListbody
 }
 
 export function v1TaskListPost$Json(http: HttpClient, rootUrl: string, params?: V1TaskListPost$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<string>> {
   const rb = new RequestBuilder(rootUrl, v1TaskListPost$Json.PATH, 'post');
   if (params) {
-    rb.body(params.body, 'application/*+json');
+    rb.body(params.body, 'application/json');
   }
 
   return http.request(

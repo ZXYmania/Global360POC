@@ -22,6 +22,5 @@ export function provideApiConfiguration(rootUrl: string) {
   providedIn: 'root',
 })
 export class ApiConfiguration {
-  rootUrl: string = 'http://backend:4000';
+  rootUrl: string = 'backend';
 }
-

@@ -6,7 +6,7 @@
   },
   "servers": [
     {
-      "url": "http://backend:4000"
+      "url": "http://backend:8080"
     }
   ],
   "paths": {
@@ -55,17 +55,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/CreateTaskListbody"
               }
             },
             "text/json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/CreateTaskListbody"
               }
             },
             "application/*+json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/CreateTaskListbody"
               }
             }
           }
@@ -155,17 +155,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/CreateTaskListbody"
               }
             },
             "text/json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/CreateTaskListbody"
               }
             },
             "application/*+json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/CreateTaskListbody"
               }
             }
           }
@@ -180,6 +180,16 @@
   },
   "components": {
     "schemas": {
+      "CreateTaskListbody": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "TaskListItem": {
         "type": "object",
         "properties": {

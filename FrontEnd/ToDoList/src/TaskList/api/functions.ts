@@ -9,6 +9,10 @@ export type { V1TaskListPost$Plain$Params as V1TaskListPost$Plain$Params } from 
 export { v1TaskListPost$Plain as v1TaskListPost$Plain } from './fn/task-list/v-1-task-list-post-plain';
 export type { V1TaskListPost$Json$Params as V1TaskListPost$Json$Params } from './fn/task-list/v-1-task-list-post-json';
 export { v1TaskListPost$Json as v1TaskListPost$Json } from './fn/task-list/v-1-task-list-post-json';
+export type { V2TaskListGet$Plain$Params as V2TaskListGet$Plain$Params } from './fn/task-list/v-2-task-list-get-plain';
+export { v2TaskListGet$Plain as v2TaskListGet$Plain } from './fn/task-list/v-2-task-list-get-plain';
+export type { V2TaskListGet$Json$Params as V2TaskListGet$Json$Params } from './fn/task-list/v-2-task-list-get-json';
+export { v2TaskListGet$Json as v2TaskListGet$Json } from './fn/task-list/v-2-task-list-get-json';
 export type { V1TaskListIdGet$Plain$Params as V1TaskListIdGet$Plain$Params } from './fn/task-list/v-1-task-list-id-get-plain';
 export { v1TaskListIdGet$Plain as v1TaskListIdGet$Plain } from './fn/task-list/v-1-task-list-id-get-plain';
 export type { V1TaskListIdGet$Json$Params as V1TaskListIdGet$Json$Params } from './fn/task-list/v-1-task-list-id-get-json';

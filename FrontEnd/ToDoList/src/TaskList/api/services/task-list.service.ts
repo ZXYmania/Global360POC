@@ -9,6 +9,7 @@ import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
 
+import { PaginatedTaskListResponse } from '../models/paginated-task-list-response';
 import { TaskListItem } from '../models/task-list-item';
 import { v1TaskListDeleteIdPost } from '../fn/task-list/v-1-task-list-delete-id-post';
 import { V1TaskListDeleteIdPost$Params } from '../fn/task-list/v-1-task-list-delete-id-post';
@@ -26,6 +27,10 @@ import { v1TaskListPost$Json } from '../fn/task-list/v-1-task-list-post-json';
 import { V1TaskListPost$Json$Params } from '../fn/task-list/v-1-task-list-post-json';
 import { v1TaskListPost$Plain } from '../fn/task-list/v-1-task-list-post-plain';
 import { V1TaskListPost$Plain$Params } from '../fn/task-list/v-1-task-list-post-plain';
+import { v2TaskListGet$Json } from '../fn/task-list/v-2-task-list-get-json';
+import { V2TaskListGet$Json$Params } from '../fn/task-list/v-2-task-list-get-json';
+import { v2TaskListGet$Plain } from '../fn/task-list/v-2-task-list-get-plain';
+import { V2TaskListGet$Plain$Params } from '../fn/task-list/v-2-task-list-get-plain';
 
 @Injectable({ providedIn: 'root' })
 export class TaskListService extends BaseService {
@@ -125,6 +130,53 @@ export class TaskListService extends BaseService {
   v1TaskListPost$Json(params?: V1TaskListPost$Json$Params, context?: HttpContext): Promise<string> {
     const resp = this.v1TaskListPost$Json$Response(params, context);
     return resp.then((r: StrictHttpResponse<string>): string => r.body);
+  }
+
+  /** Path part for operation `v2TaskListGet()` */
+  static readonly V2TaskListGetPath = '/v2/TaskList';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `v2TaskListGet$Plain()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  v2TaskListGet$Plain$Response(params?: V2TaskListGet$Plain$Params, context?: HttpContext): Promise<StrictHttpResponse<PaginatedTaskListResponse>> {
+    const obs = v2TaskListGet$Plain(this.http, this.rootUrl, params, context);
+    return firstValueFrom(obs);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `v2TaskListGet$Plain$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  v2TaskListGet$Plain(params?: V2TaskListGet$Plain$Params, context?: HttpContext): Promise<PaginatedTaskListResponse> {
+    const resp = this.v2TaskListGet$Plain$Response(params, context);
+    return resp.then((r: StrictHttpResponse<PaginatedTaskListResponse>): PaginatedTaskListResponse => r.body);
+  }
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `v2TaskListGet$Json()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  v2TaskListGet$Json$Response(params?: V2TaskListGet$Json$Params, context?: HttpContext): Promise<StrictHttpResponse<PaginatedTaskListResponse>> {
+    const obs = v2TaskListGet$Json(this.http, this.rootUrl, params, context);
+    return firstValueFrom(obs);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `v2TaskListGet$Json$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  v2TaskListGet$Json(params?: V2TaskListGet$Json$Params, context?: HttpContext): Promise<PaginatedTaskListResponse> {
+    const resp = this.v2TaskListGet$Json$Response(params, context);
+    return resp.then((r: StrictHttpResponse<PaginatedTaskListResponse>): PaginatedTaskListResponse => r.body);
   }
 
   /** Path part for operation `v1TaskListIdGet()` */

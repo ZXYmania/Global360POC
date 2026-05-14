@@ -11,14 +11,12 @@ TaskList.Initialise();
 builder.Services.AddOpenApi();
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
-builder.Services.AddCors(o => o.AddPolicy("AllowAll", builder =>
+builder.Services.AddCors(o => o.AddPolicy("AllowFrontEnd", builder =>
 {
     builder.AllowAnyOrigin()
             .AllowAnyMethod()
             .AllowAnyHeader();
 }));
-
-
 
 builder.Services.AddSwaggerGen(options =>
 {
@@ -36,7 +34,7 @@ if (app.Environment.IsDevelopment())
 }
 app.UseSwagger();
 
-app.UseCors("AllowAll"); 
+app.UseCors("AllowFrontEnd"); 
 
 
 app.Use(async (context, next) =>

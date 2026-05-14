@@ -1,10 +1,11 @@
 using System.Net;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using static TaskList;
 
 [ApiController]
-[EnableCors("AllowAll")]
+[EnableCors("AllowFrontEnd")]
 [Route("TaskList")]
 public class TaskListController : ControllerBase
 {    
@@ -22,14 +23,27 @@ public class TaskListController : ControllerBase
     }
 
     [HttpGet]
+    [Route("/v2/[controller]")]
+    public ActionResult<PaginatedTaskListResponse> GetAllTaskList([FromQuery]int start, [FromQuery] int amount)
+    {
+        if(start < 0 || start > TaskList.list.Count)
+        {
+            return new BadRequestResult();
+        }
+        var output = new PaginatedTaskList(TaskList.list.Values.ToList(), start, amount);
+       
+        return new PaginatedTaskListResponse(output.total, output.content);
+    }
+
+    [HttpGet]
     [Route("/v1/[controller]/{id}")]
     public ActionResult<TaskListItem> GetTaskById([FromRoute] Guid id)
     {
         if(TaskList.list.ContainsKey(id))
         {
-            return new ActionResult<TaskListItem>(TaskList.list[id]);
+            return new NotFoundResult();
         }
-        return new NotFoundResult();
+        return TaskList.list[id];
     }
 
     [HttpPost]

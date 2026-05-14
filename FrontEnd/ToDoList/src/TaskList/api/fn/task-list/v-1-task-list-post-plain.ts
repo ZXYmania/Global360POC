@@ -17,7 +17,6 @@ export function v1TaskListPost$Plain(http: HttpClient, rootUrl: string, params?:
   const rb = new RequestBuilder(rootUrl, v1TaskListPost$Plain.PATH, 'post');
   if (params) {
     rb.body(params.body, 'application/*+json');
-    console.log(rb);
   }
 
   return http.request(

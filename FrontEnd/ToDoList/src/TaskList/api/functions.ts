@@ -15,3 +15,5 @@ export type { V1TaskListIdGet$Json$Params as V1TaskListIdGet$Json$Params } from 
 export { v1TaskListIdGet$Json as v1TaskListIdGet$Json } from './fn/task-list/v-1-task-list-id-get-json';
 export type { V1TaskListIdPost$Params as V1TaskListIdPost$Params } from './fn/task-list/v-1-task-list-id-post';
 export { v1TaskListIdPost as v1TaskListIdPost } from './fn/task-list/v-1-task-list-id-post';
+export type { V1TaskListDeleteIdPost$Params as V1TaskListDeleteIdPost$Params } from './fn/task-list/v-1-task-list-delete-id-post';
+export { v1TaskListDeleteIdPost as v1TaskListDeleteIdPost } from './fn/task-list/v-1-task-list-delete-id-post';

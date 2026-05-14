@@ -10,6 +10,8 @@ import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
 
 import { TaskListItem } from '../models/task-list-item';
+import { v1TaskListDeleteIdPost } from '../fn/task-list/v-1-task-list-delete-id-post';
+import { V1TaskListDeleteIdPost$Params } from '../fn/task-list/v-1-task-list-delete-id-post';
 import { v1TaskListGet$Json } from '../fn/task-list/v-1-task-list-get-json';
 import { V1TaskListGet$Json$Params } from '../fn/task-list/v-1-task-list-get-json';
 import { v1TaskListGet$Plain } from '../fn/task-list/v-1-task-list-get-plain';
@@ -85,7 +87,7 @@ export class TaskListService extends BaseService {
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
    * To access only the response body, use `v1TaskListPost$Plain()` instead.
    *
-   * This method sends `application/json` and handles request body of type `application/json`.
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
   v1TaskListPost$Plain$Response(params?: V1TaskListPost$Plain$Params, context?: HttpContext): Promise<StrictHttpResponse<string>> {
     const obs = v1TaskListPost$Plain(this.http, this.rootUrl, params, context);
@@ -96,7 +98,7 @@ export class TaskListService extends BaseService {
    * This method provides access only to the response body.
    * To access the full response (for headers, for example), `v1TaskListPost$Plain$Response()` instead.
    *
-   * This method sends `application/json` and handles request body of type `application/json`.
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
   v1TaskListPost$Plain(params?: V1TaskListPost$Plain$Params, context?: HttpContext): Promise<string> {
     const resp = this.v1TaskListPost$Plain$Response(params, context);
@@ -107,7 +109,7 @@ export class TaskListService extends BaseService {
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
    * To access only the response body, use `v1TaskListPost$Json()` instead.
    *
-   * This method sends `application/json` and handles request body of type `application/json`.
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
   v1TaskListPost$Json$Response(params?: V1TaskListPost$Json$Params, context?: HttpContext): Promise<StrictHttpResponse<string>> {
     const obs = v1TaskListPost$Json(this.http, this.rootUrl, params, context);
@@ -118,7 +120,7 @@ export class TaskListService extends BaseService {
    * This method provides access only to the response body.
    * To access the full response (for headers, for example), `v1TaskListPost$Json$Response()` instead.
    *
-   * This method sends `application/json` and handles request body of type `application/json`.
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
   v1TaskListPost$Json(params?: V1TaskListPost$Json$Params, context?: HttpContext): Promise<string> {
     const resp = this.v1TaskListPost$Json$Response(params, context);
@@ -179,7 +181,7 @@ export class TaskListService extends BaseService {
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
    * To access only the response body, use `v1TaskListIdPost()` instead.
    *
-   * This method sends `application/json` and handles request body of type `application/json`.
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
   v1TaskListIdPost$Response(params: V1TaskListIdPost$Params, context?: HttpContext): Promise<StrictHttpResponse<void>> {
     const obs = v1TaskListIdPost(this.http, this.rootUrl, params, context);
@@ -190,10 +192,35 @@ export class TaskListService extends BaseService {
    * This method provides access only to the response body.
    * To access the full response (for headers, for example), `v1TaskListIdPost$Response()` instead.
    *
-   * This method sends `application/json` and handles request body of type `application/json`.
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
   v1TaskListIdPost(params: V1TaskListIdPost$Params, context?: HttpContext): Promise<void> {
     const resp = this.v1TaskListIdPost$Response(params, context);
+    return resp.then((r: StrictHttpResponse<void>): void => r.body);
+  }
+
+  /** Path part for operation `v1TaskListDeleteIdPost()` */
+  static readonly V1TaskListDeleteIdPostPath = '/v1/TaskList/Delete/{id}';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `v1TaskListDeleteIdPost()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  v1TaskListDeleteIdPost$Response(params: V1TaskListDeleteIdPost$Params, context?: HttpContext): Promise<StrictHttpResponse<void>> {
+    const obs = v1TaskListDeleteIdPost(this.http, this.rootUrl, params, context);
+    return firstValueFrom(obs);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `v1TaskListDeleteIdPost$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  v1TaskListDeleteIdPost(params: V1TaskListDeleteIdPost$Params, context?: HttpContext): Promise<void> {
+    const resp = this.v1TaskListDeleteIdPost$Response(params, context);
     return resp.then((r: StrictHttpResponse<void>): void => r.body);
   }
 

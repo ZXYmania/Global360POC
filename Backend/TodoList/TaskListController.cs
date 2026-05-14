@@ -53,4 +53,16 @@ public class TaskListController : ControllerBase
         return new NotFoundResult();
     }
 
+    [HttpPost]
+    [Route("/v1/[controller]/Delete/{id}")]
+    public ActionResult DeleteTaskListItem([FromRoute] Guid id)
+    {
+        if(TaskList.list.ContainsKey(id))
+        {
+            TaskList.list.Remove(id);
+            return new OkResult();
+        }
+        return new NotFoundResult();
+    }
+
 }

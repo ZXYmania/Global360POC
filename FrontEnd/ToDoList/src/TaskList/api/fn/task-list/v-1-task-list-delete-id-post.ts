@@ -7,18 +7,15 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { CreateTaskListbody } from '../../models/create-task-listbody';
 
-export interface V1TaskListIdPost$Params {
+export interface V1TaskListDeleteIdPost$Params {
   id: string;
-      body?: CreateTaskListbody
 }
 
-export function v1TaskListIdPost(http: HttpClient, rootUrl: string, params: V1TaskListIdPost$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
-  const rb = new RequestBuilder(rootUrl, v1TaskListIdPost.PATH, 'post');
+export function v1TaskListDeleteIdPost(http: HttpClient, rootUrl: string, params: V1TaskListDeleteIdPost$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+  const rb = new RequestBuilder(rootUrl, v1TaskListDeleteIdPost.PATH, 'post');
   if (params) {
     rb.path('id', params.id, {});
-    rb.body(params.body, 'application/*+json');
   }
 
   return http.request(
@@ -31,4 +28,4 @@ export function v1TaskListIdPost(http: HttpClient, rootUrl: string, params: V1Ta
   );
 }
 
-v1TaskListIdPost.PATH = '/v1/TaskList/{id}';
+v1TaskListDeleteIdPost.PATH = '/v1/TaskList/Delete/{id}';

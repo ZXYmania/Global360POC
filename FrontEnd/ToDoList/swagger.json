@@ -6,7 +6,7 @@
   },
   "servers": [
     {
-      "url": "http://backend:8080"
+      "url": "/backend"
     }
   ],
   "paths": {
@@ -170,6 +170,29 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/v1/TaskList/Delete/{id}": {
+      "post": {
+        "tags": [
+          "TaskList"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"

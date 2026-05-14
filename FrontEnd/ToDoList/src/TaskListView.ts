@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, EventEmitter, inject, OnInit, Output, output, signal } from '@angular/core';
 import { TaskListService } from './TaskList/api/services';
 import { TaskListItem } from './TaskList/api/models';
 import { TaskItem } from './TaskItem';
@@ -10,10 +10,9 @@ import { TaskItem } from './TaskItem';
   template: `
 
       @for (item of results(); track item) {
-        <TaskItem [item]=item [addToTaskList]="addTask"/>
+        <TaskItem [item]=item (refreshEvent)=OnRefreshEvent()/>
       }
-      <TaskItem [item]=addTaskItem />
-
+      <TaskItem [item]=addTaskItem (refreshEvent)=OnRefreshEvent()/>
     `
 })
 
@@ -21,16 +20,15 @@ export class TaskListView implements OnInit {
   protected readonly results = signal<TaskListItem[] | null>(null);
 
   private taskListService = inject(TaskListService);
-  protected addTaskItem : TaskListItem | undefined;
+  protected addTaskItem : TaskListItem = { content: ""};
 
   async ngOnInit() {
     this.refreshTaskList();
   }
 
-  async addTask(item: TaskListItem)
+  async OnRefreshEvent()
   {
-    this.results()?.push(item);
-    this.addTaskItem = {id: undefined, content: undefined};
+    this.refreshTaskList();
   }
 
   async refreshTaskList()

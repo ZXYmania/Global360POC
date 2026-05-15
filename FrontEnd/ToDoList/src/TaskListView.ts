@@ -1,17 +1,18 @@
-import { Component, EventEmitter, inject, OnInit, Output, output, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { TaskListService } from './TaskList/api/services';
-import { TaskListItem, PaginatedTaskListResponse } from './TaskList/api/models';
+import { PaginatedTaskListResponse } from './TaskList/api/models';
 import { TaskItem } from './TaskItem';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'TaskListView',
   standalone: true,
   imports: [TaskItem],
   template: `
-      @for (item of results()?.content; track item) {
+      @for (item of results()?.content; track {id: item.id, content:item.content}) {
         <TaskItem [id]=item.id [content]=item.content (refreshEvent)=OnRefreshEvent()/>
       }
+      <TaskItem [content]="newText()" (refreshEvent)=OnRefreshEvent() (updateContentEvent)="UpdateNewText($event)"/>
       <div class ="row">
           <button (click)=UpdatePagination(false)> < </button>
           <button (click)=UpdatePagination(true)> > </button>
@@ -20,7 +21,8 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 })
 
 export class TaskListView implements OnInit {
-  protected readonly results = signal<PaginatedTaskListResponse | null>(null);
+  public readonly results = signal<PaginatedTaskListResponse | null>(null);
+  public readonly newText = signal<string>("");
 
   private taskListService = inject(TaskListService);
   protected start : number | undefined;
@@ -38,22 +40,14 @@ export class TaskListView implements OnInit {
   async FetchPaginatedTaskList()
   {
     await this.taskListService.v2TaskListGet$Json({ start: this.start, amount: this.amount}).then(
-      results => this.results.set({
-            total: results.total,
-            content: results.content? [...results.content, {content:""}] : [{content:""}]
-          })
+      results => this.results.set(results)
     ).catch(
       async error =>  {
         let httpError = error as HttpErrorResponse;
         if(httpError.status == 400 )
         {
           this.start = 0;
-          let results : PaginatedTaskListResponse = await this.taskListService.v2TaskListGet$Json({ start:this.start, amount: this.amount});
-          this.results.set({
-            total: results.total,
-            content: results?.content? [...results.content, {content:""}] : [{content:""}]
-          })
-            
+          this.results.set(await this.taskListService.v2TaskListGet$Json({ start:this.start, amount: this.amount}))
         }
       }
     );
@@ -64,6 +58,12 @@ export class TaskListView implements OnInit {
     this.start = this.start? this.start : 0;
     this.amount = this.amount? this.amount : 10;
     await this.FetchPaginatedTaskList();
+    this.newText.set("");
+  }
+
+  async UpdateNewText(content: string)
+  {
+    this.newText.set(content);
   }
 
   UpdatePagination(more: boolean)
